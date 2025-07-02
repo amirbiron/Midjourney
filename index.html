@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מדריך לשימוש במידג'רני</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0f2f1;
+            background: linear-gradient(135deg, #0d1b1e 0%, #1a3a40 50%, #2d5a5f 100%);
+            min-height: 100vh;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #26a69a, #4db6ac, #80cbc4);
+            border-radius: 2px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 10px rgba(38, 166, 154, 0.4); }
+            to { box-shadow: 0 0 20px rgba(77, 182, 172, 0.7); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #26a69a, #4db6ac, #80cbc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .intro {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #b2dfdb;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(77, 182, 172, 0.5), transparent);
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(77, 182, 172, 0.4);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #4db6ac;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #4db6ac, transparent);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: #e0f7fa;
+            margin: 1.5rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .button-group {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .button-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .button-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(77, 182, 172, 0.5);
+            transform: translateX(-5px);
+        }
+
+        .button-name {
+            font-weight: 700;
+            color: #26a69a;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .button-desc {
+            color: #c0f0e8;
+            line-height: 1.5;
+        }
+
+        .row-title {
+            font-size: 1.2rem;
+            color: #80deea;
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+            border-right: 3px solid #80deea;
+            padding-right: 1rem;
+        }
+
+        .credits-section {
+            background: linear-gradient(135deg, rgba(38, 166, 154, 0.15), rgba(77, 182, 172, 0.15));
+            border: 1px solid rgba(38, 166, 154, 0.4);
+        }
+
+        .credits-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .credits-title {
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .high-cost {
+            background: rgba(229, 115, 115, 0.2);
+            color: #e57373;
+            border: 1px solid rgba(229, 115, 115, 0.4);
+        }
+
+        .medium-cost {
+            background: rgba(255, 183, 77, 0.2);
+            color: #ffb74d;
+            border: 1px solid rgba(255, 183, 77, 0.4);
+        }
+
+        .low-cost {
+            background: rgba(129, 199, 132, 0.2);
+            color: #81c784;
+            border: 1px solid rgba(129, 199, 132, 0.4);
+        }
+
+        .credits-list {
+            list-style: none;
+            padding-right: 1rem;
+        }
+
+        .credits-list li {
+            padding: 0.3rem 0;
+            color: #d0f2f0;
+            position: relative;
+        }
+
+        .credits-list li::before {
+            content: '▸';
+            color: #4db6ac;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-text {
+            color: #a7d8d4;
+            font-size: 1rem;
+        }
+
+        .highlight {
+            background: rgba(78, 205, 196, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            color: #4db6ac;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header fade-in">
+            <h1>🎨 מדריך לשימוש במידג'רני</h1>
+        </div>
+
+        <div class="intro fade-in">
+            מדריך זה יסביר לך איך להשתמש בכל הכלים והלחצנים במידג'רני ליצירת תמונות מושלמות.
+        </div>
+
+        <div class="section fade-in">
+            <h2>🎛️ הגדרות תמונה</h2>
+            
+            <div class="button-item">
+                <div class="button-desc">
+                    <strong>איך להגיע:</strong> לחיצה על הסמל (שלושה קווים אופקיים עם עיגולים) בפינה הימנית העליונה של תיבת הקלט פותח תפריט הגדרות התמונה:
+                </div>
+            </div>
+
+            <div class="button-group">
+                <div class="button-item">
+                    <div class="button-name">Image Size</div>
+                    <div class="button-desc">בחירת יחס גובה-רוחב של התמונה: Portrait (אנכי), Square (ריבוע), Landscape (רחב) או בחירה ידנית (כמו 16:9)</div>
+                </div>
+
+                <div class="button-item">
+                    <div class="button-name">Aesthetics</div>
+                    <div class="button-desc">
+                        <strong>Stylization:</strong> רמת העיבוד האמנותי של התמונה (פחות = ריאליסטי יותר, יותר = אמנותי יותר)<br>
+                        <strong>Weirdness:</strong> רמת המוזרות והיצירתיות<br>
+                        <strong>Variety:</strong> רמת הגיוון בין התמונות שנוצרות
+                    </div>
+                </div>
+
+                <div class="button-item">
+                    <div class="button-name">Model</div>
+                    <div class="button-desc">
+                        <strong>Mode:</strong> Standard (רגיל) או Raw (פחות עיבוד)<br>
+                        <strong>Version:</strong> בחירת גרסת המודל<br>
+                        • Standard - הגרסה הרגילה<br>
+                        • Draft - טיוטה חסכונית<br>
+                        • 7 - גרסה ספציפית
+                    </div>
+                </div>
+
+                <div class="button-item">
+                    <div class="button-name">Speed</div>
+                    <div class="button-desc">מהירות עיבוד: Relax (איטי וחסכוני), Fast (מהיר), Turbo (הכי מהיר)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>📷 הוספת תמונות רפרנס</h2>
+            
+            <div class="button-item">
+                <div class="button-desc">
+                    <strong>איך להגיע:</strong> לחיצה על סמל התמונה 🖼️ שבצד תיבת קלט ההנחיה פותח תפריט עם 3 אפשרויות:
+                </div>
+            </div>
+
+            <div class="button-group">
+                <div class="button-item">
+                    <div class="button-name">Image Prompts</div>
+                    <div class="button-desc">שימוש באלמנטים של תמונה - משפיע על התוכן, הקומפוזיציה והצבעים</div>
+                </div>
+
+                <div class="button-item">
+                    <div class="button-name">Style References</div>
+                    <div class="button-desc">שימוש בסגנון של תמונה - משפיע רק על הסטייל והתחושה</div>
+                </div>
+
+                <div class="button-item">
+                    <div class="button-name">Omni Reference</div>
+                    <div class="button-desc">שימוש בדמיון של אדם או בצורה של אובייקט - מאפשר להכניס דמויות, חפצים, כלי רכב או יצורים לא אנושיים מתמונה אישית שלך ליצירות מידג'רני שלך</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>⚡ אחרי יצירת התמונה</h2>
+            
+            <div class="button-item">
+                <div class="button-desc">
+                    לאחר שנוצרה התמונה (המערכת מייצרת רשת של 4 תמונות) מופיעים מתחתיה לחצנים שונים. עכשיו נסביר על כל לחצן מה הוא עושה
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>🔧 הלחצנים הבסיסיים</h2>
+            
+            <div class="button-group">
+                <div class="button-item">
+                    <div class="button-name">Vary</div>
+                    <div class="button-desc">יוצר 4 וריאציות חדשות של כל הרשת (4 התמונות)<br>
+                    <strong>מתי להשתמש:</strong> כשהכיוון הכללי טוב אבל רוצה לראות אפשרויות שונות<br><br>
+                    <strong>בוחרים מ-2 האפשרויות הבאות:</strong><br>
+                    <strong>Subtle:</strong> וריאציות עדינות - שינויים קטנים ומעודנים<br>
+                    <strong>Strong:</strong> וריאציות חזקות - שינויים דרמטיים</div>
+                </div>
+
+                <div class="button-item">
+                    <div class="button-name">Upscale</div>
+                    <div class="button-desc"><strong>מה זה עושה:</strong> משפר את האיכות של התמונה; מגדיל את הרזולוציה פי 2<br>
+                    <strong>מתי להשתמש:</strong> כשמצאת תמונה שמרצה אותך ואתה רוצה אותה באיכות גבוהה<br><br>
+                    <strong>בוחרים מ-2 האפשרויות הבאות:</strong><br>
+                    <strong>Subtle:</strong> מגדיל את הרזולוציה פי 2 עם שינויים עדינים ככל האפשר<br>
+                    <strong>Creative:</strong> מגדיל את הרזולוציה פי 2 עם תוספת שינויים יצירתיים ואמנותיים<br><br>
+                    <span class="highlight">טיפ:</span> שימוש במשדרג ה-Creative יכול לפעמים לעזור לתקן בעיות קטנות בתמונה, כמו תנוחות ידיים מביכות או הבעות פנים מוזרות.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>⚡ לחצנים נוספים שמופיעים לפעמים</h2>
+            
+            <h3>🔄 לחצן Re-roll - אם מופיע</h3>
+            <div class="button-item">
+                <div class="button-desc"><strong>מה זה עושה:</strong> מריץ שוב את אותו הפרומפט בדיוק<br>
+                <strong>איך זה עובד:</strong> לוקח את אותו הטקסט שכתבת ויוצר 4 תמונות חדשות לגמרי<br>
+                <strong>מתי מופיע:</strong> בעיקר כשיש בעיות טכניות או כשהמערכת חושבת שהתוצאות לא מספקות<br>
+                <strong>מתי להשתמש:</strong> כשאף תמונה לא מספקת אותך ואתה רוצה ניסיון חדש</div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>🚀 לחצנים מתקדמים</h2>
+            
+            <h3>✏️ Remix</h3>
+            <div class="button-group">
+                <div class="button-item">
+                    <div class="button-name">Remix</div>
+                    <div class="button-desc"><strong>מה זה עושה:</strong> מאפשר לך לערוך את הפרומפט של התמונה הקיימת<br>
+                    <strong>איך זה עובד:</strong> פותח את הפרומפט המקורי לעריכה ויוצר גרסה חדשה<br>
+                    <strong>מתי להשתמש:</strong> כשאתה רוצה לשנות חלקים מהתיאור אבל לשמור על הבסיס</div>
+                </div>
+                <div class="button-item">
+                    <div class="button-name">Subtle / Strong (עם Remix)</div>
+                    <div class="button-desc">עובדים עם ה-Remix - רמת השינוי של הרמיקס</div>
+                </div>
+            </div>
+
+            <h3>🔍 Pan (חצים)</h3>
+            <div class="button-group">
+                <div class="button-item">
+                    <div class="button-desc">
+                        <strong>⬆️ (למעלה):</strong> מרחיב את התמונה למעלה<br>
+                        <strong>⬇️ (למטה):</strong> מרחיב את התמונה למטה<br>
+                        <strong>⬅️ (שמאל):</strong> מרחיב את התמונה שמאלה<br>
+                        <strong>➡️ (ימין):</strong> מרחיב את התמונה ימינה
+                    </div>
+                </div>
+            </div>
+
+            <h3>🔎 Zoom</h3>
+            <div class="button-group">
+                <div class="button-item">
+                    <div class="button-desc">
+                        <strong>1.5x:</strong> הרחבה קטנה של התמונה<br>
+                        <strong>2x:</strong> הרחבה גדולה של התמונה<br>
+                        <strong>מתי להשתמש:</strong> כשרוצה לראות יותר מהסביבה
+                    </div>
+                </div>
+            </div>
+
+            <h3>🛠️ לחצנים נוספים (עשויים להופיע בהתאם למנוי/גרסה)</h3>
+            <div class="button-group">
+                <div class="button-item">
+                    <div class="button-desc">
+                        <strong>Rerun</strong> - מריץ שוב את אותו הפרומפט<br>
+                        <strong>Enhance</strong> - משפר את איכות התמונה<br>
+                        <strong>Reframe</strong> - משנה את יחס הגובה-רוחב של התמונה (מאנכי לרחב או להיפך)<br>
+                        <strong>Repaint</strong> - מאפשר לצבוע מחדש חלקים מהתמונה <em>(תכונה מתקדמת)</em>
+                    </div>
+                </div>
+            </div>
+
+            <h3>🔄 Use (שימוש חוזר)</h3>
+            <div class="button-group">
+                <div class="button-item">
+                    <div class="button-desc">
+                        <strong>Image</strong> - שימוש בתוכן, קומפוזיציה ובצבעים של התמונה לצורך יצירה חדשה<br>
+                        <strong>Style</strong> - שימוש בסטייל ובתחושה של התמונה לצורך יצירה חדשה<br>
+                        <strong>Prompt</strong> - מעתיק את הפרומפט של התמונה לשורת הקלט
+                    </div>
+                </div>
+            </div>
+
+            <h3>🎬 Animate Image <em>(זמין במנויים מסוימים/בטא)</em></h3>
+            <div class="button-group">
+                <div class="button-item">
+                    <div class="button-desc">
+                        <strong>Auto</strong> - אנימציה אוטומטית<br>
+                        <strong>Low Motion / High Motion</strong> - רמות שונות של תנועה באנימציה<br>
+                        <strong>Manual</strong> - שליטה ידנית על האנימציה
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>💡 לחצני עזר נוספים</h2>
+            
+            <div class="button-item">
+                <div class="button-name">❤️ Heart</div>
+                <div class="button-desc"><strong>מה זה עושה:</strong> מוסיף את התמונה למועדפים שלך</div>
+            </div>
+        </div>
+
+        <div class="section credits-section fade-in">
+            <h2>💳 צריכת קרדיטים</h2>
+            
+            <div class="credits-group">
+                <div class="credits-title high-cost">צורך הרבה קרדיטים:</div>
+                <ul class="credits-list">
+                    <li>Animate Image</li>
+                    <li>Remix</li>
+                    <li>Re-roll</li>
+                </ul>
+            </div>
+
+            <div class="credits-group">
+                <div class="credits-title medium-cost">צריכה רגילה:</div>
+                <ul class="credits-list">
+                    <li>Vary, Subtle, Strong</li>
+                    <li>Upscale</li>
+                    <li>Pan/Zoom</li>
+                </ul>
+            </div>
+
+            <div class="credits-group">
+                <div class="credits-title low-cost">צריכה קטנה:</div>
+                <ul class="credits-list">
+                    <li>Enhance, Reframe</li>
+                    <li>Use (Image/Style/Prompt)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer fade-in">
+            <div class="footer-text">
+                הבנת הלחצנים במידג'רני חיונית ליצירה יעילה. הממשק מפשט את התהליך עם לחצנים ברורים. התחל עם שינויים קטנים (<span class="highlight">Subtle</span>), עבור ל-<span class="highlight">Upscale</span> כשמצאת משהו טוב, וזכור שכל פעולה צורכת קרדיטים - אז תכנן בהתאם.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section, .intro, .header').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.8s ease-out';
+            observer.observe(section);
+        });
+
+        // Smooth hover effects for buttons
+        document.querySelectorAll('.button-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(-5px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
