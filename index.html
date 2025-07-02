@@ -105,6 +105,42 @@
             border-color: rgba(77, 182, 172, 0.4);
         }
 
+        /* צבעים שונים לכל מדור */
+        .section-settings {
+            background: linear-gradient(135deg, rgba(63, 81, 181, 0.08), rgba(92, 107, 192, 0.08));
+            border: 1px solid rgba(63, 81, 181, 0.2);
+        }
+
+        .section-references {
+            background: linear-gradient(135deg, rgba(156, 39, 176, 0.08), rgba(186, 104, 200, 0.08));
+            border: 1px solid rgba(156, 39, 176, 0.2);
+        }
+
+        .section-after-creation {
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.08), rgba(255, 193, 7, 0.08));
+            border: 1px solid rgba(255, 152, 0, 0.2);
+        }
+
+        .section-basic {
+            background: linear-gradient(135deg, rgba(38, 166, 154, 0.08), rgba(77, 182, 172, 0.08));
+            border: 1px solid rgba(38, 166, 154, 0.2);
+        }
+
+        .section-additional {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08), rgba(129, 199, 132, 0.08));
+            border: 1px solid rgba(76, 175, 80, 0.2);
+        }
+
+        .section-advanced {
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.08), rgba(240, 98, 146, 0.08));
+            border: 1px solid rgba(233, 30, 99, 0.2);
+        }
+
+        .section-helpers {
+            background: linear-gradient(135deg, rgba(96, 125, 139, 0.08), rgba(144, 164, 174, 0.08));
+            border: 1px solid rgba(96, 125, 139, 0.2);
+        }
+
         h2 {
             font-size: 1.8rem;
             color: #4db6ac;
@@ -161,15 +197,6 @@
         .button-desc {
             color: #c0f0e8;
             line-height: 1.5;
-        }
-
-        .row-title {
-            font-size: 1.2rem;
-            color: #80deea;
-            margin: 2rem 0 1rem 0;
-            font-weight: 600;
-            border-right: 3px solid #80deea;
-            padding-right: 1rem;
         }
 
         .credits-section {
@@ -284,10 +311,10 @@
         </div>
 
         <div class="intro fade-in">
-            מדריך זה יסביר לך איך להשתמש בכל הכלים והלחצנים במידג'רני ליצירת תמונות מושלמות.
+            מדריך זה יסביר לך איך להשתמש בכל הכלים והלחצנים במידג'רני ליצירת תמונות מושלמות
         </div>
 
-        <div class="section fade-in">
+        <div class="section section-settings fade-in">
             <h2>🎛️ הגדרות תמונה</h2>
             
             <div class="button-item">
@@ -329,7 +356,7 @@
             </div>
         </div>
 
-        <div class="section fade-in">
+        <div class="section section-references fade-in">
             <h2>📷 הוספת תמונות רפרנס</h2>
             
             <div class="button-item">
@@ -356,7 +383,7 @@
             </div>
         </div>
 
-        <div class="section fade-in">
+        <div class="section section-after-creation fade-in">
             <h2>⚡ אחרי יצירת התמונה</h2>
             
             <div class="button-item">
@@ -366,7 +393,7 @@
             </div>
         </div>
 
-        <div class="section fade-in">
+        <div class="section section-basic fade-in">
             <h2>🔧 הלחצנים הבסיסיים</h2>
             
             <div class="button-group">
@@ -386,12 +413,12 @@
                     <strong>בוחרים מ-2 האפשרויות הבאות:</strong><br>
                     <strong>Subtle:</strong> מגדיל את הרזולוציה פי 2 עם שינויים עדינים ככל האפשר<br>
                     <strong>Creative:</strong> מגדיל את הרזולוציה פי 2 עם תוספת שינויים יצירתיים ואמנותיים<br><br>
-                    <span class="highlight">טיפ:</span> שימוש במשדרג ה-Creative יכול לפעמים לעזור לתקן בעיות קטנות בתמונה, כמו תנוחות ידיים מביכות או הבעות פנים מוזרות.</div>
+                    <span class="highlight">טיפ:</span> שימוש במשדרג ה-Creative יכול לפעמים לעזור לתקן בעיות קטנות בתמונה, כמו תנוחות ידיים מביכות או הבעות פנים מוזרות</div>
                 </div>
             </div>
         </div>
 
-        <div class="section fade-in">
+        <div class="section section-additional fade-in">
             <h2>⚡ לחצנים נוספים שמופיעים לפעמים</h2>
             
             <h3>🔄 לחצן Re-roll - אם מופיע</h3>
@@ -403,7 +430,7 @@
             </div>
         </div>
 
-        <div class="section fade-in">
+        <div class="section section-advanced fade-in">
             <h2>🚀 לחצנים מתקדמים</h2>
             
             <h3>✏️ Remix</h3>
@@ -478,7 +505,7 @@
             </div>
         </div>
 
-        <div class="section fade-in">
+        <div class="section section-helpers fade-in">
             <h2>💡 לחצני עזר נוספים</h2>
             
             <div class="button-item">
@@ -519,45 +546,11 @@
 
         <div class="footer fade-in">
             <div class="footer-text">
-                הבנת הלחצנים במידג'רני חיונית ליצירה יעילה. הממשק מפשט את התהליך עם לחצנים ברורים. התחל עם שינויים קטנים (<span class="highlight">Subtle</span>), עבור ל-<span class="highlight">Upscale</span> כשמצאת משהו טוב, וזכור שכל פעולה צורכת קרדיטים - אז תכנן בהתאם.
+                הבנת הלחצנים במידג'רני חיונית ליצירה יעילה. הממשק מפשט את התהליך עם לחצנים ברורים. התחל עם שינויים קטנים (<span class="highlight">Subtle</span>), עבור ל-<span class="highlight">Upscale</span> כשמצאת משהו טוב, וזכור שכל פעולה צורכת קרדיטים - אז תכנן בהתאם
             </div>
         </div>
     </div>
 
     <script>
         // Add fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections
-        document.querySelectorAll('.section, .intro, .header').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
-            section.style.transition = 'all 0.8s ease-out';
-            observer.observe(section);
-        });
-
-        // Smooth hover effects for buttons
-        document.querySelectorAll('.button-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateX(-5px) scale(1.02)';
-            });
-            
-            item.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateX(0) scale(1)';
-            });
-        });
-    </script>
-</body>
-</html>
+        const observerOpt
