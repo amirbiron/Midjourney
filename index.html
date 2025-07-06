@@ -105,40 +105,68 @@
             border-color: rgba(77, 182, 172, 0.4);
         }
 
-        /* צבעים שונים לכל מדור */
+        /* צבעים בולטים לכל מדור */
         .section-settings {
-            background: linear-gradient(135deg, rgba(63, 81, 181, 0.08), rgba(92, 107, 192, 0.08));
-            border: 1px solid rgba(63, 81, 181, 0.2);
+            background: linear-gradient(135deg, rgba(63, 81, 181, 0.25), rgba(92, 107, 192, 0.25));
+            border: 2px solid rgba(63, 81, 181, 0.6);
+        }
+
+        .section-settings::before {
+            background: linear-gradient(90deg, transparent, rgba(63, 81, 181, 0.8), transparent);
         }
 
         .section-references {
-            background: linear-gradient(135deg, rgba(156, 39, 176, 0.08), rgba(186, 104, 200, 0.08));
-            border: 1px solid rgba(156, 39, 176, 0.2);
+            background: linear-gradient(135deg, rgba(156, 39, 176, 0.25), rgba(186, 104, 200, 0.25));
+            border: 2px solid rgba(156, 39, 176, 0.6);
+        }
+
+        .section-references::before {
+            background: linear-gradient(90deg, transparent, rgba(156, 39, 176, 0.8), transparent);
         }
 
         .section-after-creation {
-            background: linear-gradient(135deg, rgba(255, 152, 0, 0.08), rgba(255, 193, 7, 0.08));
-            border: 1px solid rgba(255, 152, 0, 0.2);
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.25), rgba(255, 193, 7, 0.25));
+            border: 2px solid rgba(255, 152, 0, 0.6);
+        }
+
+        .section-after-creation::before {
+            background: linear-gradient(90deg, transparent, rgba(255, 152, 0, 0.8), transparent);
         }
 
         .section-basic {
-            background: linear-gradient(135deg, rgba(38, 166, 154, 0.08), rgba(77, 182, 172, 0.08));
-            border: 1px solid rgba(38, 166, 154, 0.2);
+            background: linear-gradient(135deg, rgba(0, 150, 136, 0.25), rgba(38, 166, 154, 0.25));
+            border: 2px solid rgba(0, 150, 136, 0.6);
+        }
+
+        .section-basic::before {
+            background: linear-gradient(90deg, transparent, rgba(0, 150, 136, 0.8), transparent);
         }
 
         .section-additional {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08), rgba(129, 199, 132, 0.08));
-            border: 1px solid rgba(76, 175, 80, 0.2);
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.25), rgba(139, 195, 74, 0.25));
+            border: 2px solid rgba(76, 175, 80, 0.6);
+        }
+
+        .section-additional::before {
+            background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.8), transparent);
         }
 
         .section-advanced {
-            background: linear-gradient(135deg, rgba(233, 30, 99, 0.08), rgba(240, 98, 146, 0.08));
-            border: 1px solid rgba(233, 30, 99, 0.2);
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.25), rgba(240, 98, 146, 0.25));
+            border: 2px solid rgba(233, 30, 99, 0.6);
+        }
+
+        .section-advanced::before {
+            background: linear-gradient(90deg, transparent, rgba(233, 30, 99, 0.8), transparent);
         }
 
         .section-helpers {
-            background: linear-gradient(135deg, rgba(96, 125, 139, 0.08), rgba(144, 164, 174, 0.08));
-            border: 1px solid rgba(96, 125, 139, 0.2);
+            background: linear-gradient(135deg, rgba(96, 125, 139, 0.25), rgba(144, 164, 174, 0.25));
+            border: 2px solid rgba(96, 125, 139, 0.6);
+        }
+
+        .section-helpers::before {
+            background: linear-gradient(90deg, transparent, rgba(96, 125, 139, 0.8), transparent);
         }
 
         h2 {
@@ -475,7 +503,7 @@
                 <div class="button-item">
                     <div class="button-desc">
                         <strong>Rerun</strong> - מריץ שוב את אותו הפרומפט<br>
-                        <strong>Enhance</strong> - משפר את איכות התמונה<br>
+                        <strong>Enhance</strong> - מריץ מחדש עבודת Draft באיכות מלאה<br>
                         <strong>Reframe</strong> - משנה את יחס הגובה-רוחב של התמונה (מאנכי לרחב או להיפך)<br>
                         <strong>Repaint</strong> - מאפשר לצבוע מחדש חלקים מהתמונה <em>(תכונה מתקדמת)</em>
                     </div>
@@ -553,4 +581,38 @@
 
     <script>
         // Add fade-in animation on scroll
-        const observerOpt
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section, .intro, .header').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.8s ease-out';
+            observer.observe(section);
+        });
+
+        // Smooth hover effects for buttons
+        document.querySelectorAll('.button-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(-5px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
